@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+
+void swap(double numArray[],const int index_1,const int index_2);
+void selectSort(double numArray[],int size);
+
+int main() {
+  int arraySize = 0;
+
+  do{
+  cout<<"Please State the Size of Your Array"<<endl;
+  cin>>arraySize;
+  }while(arraySize ==0);
+
+  double numArray[arraySize]; 
+
+  int n=0;
+  double input;
+  
+  do{
+    cout<<"Please enter the desired interger"<<endl;
+    cin>>input;
+    numArray[n]=input;
+    n++;
+  }while(n<arraySize);
+
+  cout<<"This is the store array variables"<<endl<<endl;
+
+  for (int i=0; i<arraySize; i++){
+    cout<<"Array Index: "<<i<<": "<<numArray[i]<<endl;
+  }
+
+  selectSort(numArray, arraySize);
+
+  cout<<"The smallest variable is: "<<numArray[0]<<" and the largest variableis: "<<numArray[arraySize-1]<<"."<<endl;
+
+  
+
+  return 0;
+}
+
+void selectSort(double numArray[],int size){
+  int minIndex=0;
+
+  for(int i=0; i<size-1;i++){
+    minIndex=i;
+    for(int j=i+1; j<size;j++){
+      if(numArray[j]<numArray[minIndex]){
+        minIndex=j;
+      }
+    }
+  swap(numArray[i],numArray[minIndex]);
+  }
+}
+
+void swap(double numArray[],const int index_1,const int index_2){
+  double temp = numArray[index_1];
+  numArray[index_1] = numArray[index_2];
+  numArray[index_2] = temp;
+}
